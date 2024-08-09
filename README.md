@@ -6,7 +6,7 @@ A personal portfolio Designed and developed by Ismail A. Ogundele,
 
 ## Overview
 
-This document outlines the design and implementation of the Portfolio website named TechNest website. The website is designed using Figma which is one of our Course in the Level 2 of Interactive Media Design, Algonquin College, and requested to be developed using the Bootstrap framework and is fully responsive across various devices, including desktop, tablet, and mobile, to fufil the complete of our course MTM6201, the website comprises 3 pages, namely HOME, ABOUT and CONTACT.
+This document details the design and development of the TechNest Portfolio website. The website was initially designed in Figma as part of the Level 2 Interactive Media Design course at Algonquin College. It was then developed using the Bootstrap framework to fulfill the requirements of the MTM6201 course. The website is fully responsive, adapting seamlessly to various devices, including desktop, tablet, and mobile. The portfolio consists of three pages: HOME, ABOUT, and CONTACT.
 
 ```bash
 git clone [repository-url]
