@@ -17,7 +17,7 @@
     <header>
       <nav class="navbar navbar-expand-md" data-bs-theme="light">
         <div class="container">
-          <a class="navbar-brand" href="index.html">TechNest</a>
+          <a class="navbar-brand fw-bold" href="index.html">TechNest</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -227,7 +227,7 @@
             <div class="col-lg-4 text-center text-lg-start">
               <img
                 class="img-fluid"
-                src="/assets/hooks.png"
+                src="./assets/react-hooks.png"
                 alt="React Hooks Webinar"
               />
             </div>
@@ -277,9 +277,19 @@
             out—subscribe today and be the first to know about everything we're
             working on. Your journey with us is just a click away!
           </p>
-          <button class="btn btn-dark nav-item" type="button">
-            Join Newsletter
-          </button>
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-dark">Subscribe</button>
+          </form>
         </div>
       </section>
     </main>
@@ -353,5 +363,61 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Javascript -->
+
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function (event) {
+          const email = document.getElementById("email").value;
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            event.preventDefault();
+          }
+        });
+
+        const lazyImages = [].slice.call(
+          document.querySelectorAll('img[loading="lazy"]')
+        );
+
+        if ("IntersectionObserver" in window) {
+          const lazyImageObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const lazyImage = entry.target;
+                  lazyImage.src = lazyImage.dataset.src;
+                  lazyImage.removeAttribute("data-src");
+                  lazyImage.removeAttribute("loading");
+                  lazyImageObserver.unobserve(lazyImage);
+                }
+              });
+            }
+          );
+
+          lazyImages.forEach((lazyImage) => {
+            lazyImageObserver.observe(lazyImage);
+          });
+        } else {
+          lazyImages.forEach((image) => {
+            image.src = image.dataset.src;
+            image.removeAttribute("data-src");
+            image.removeAttribute("loading");
+          });
+        }
+      });
+    </script>
   </body>
 </html>
